@@ -44,7 +44,7 @@ public class Insert extends Conn {
         em.close();
         emf.close();
     }
-
+    ///////////////////////////////////////////////////////////     CARGA DIRECCIONES
     public static void cargarDireccion() {
         Direccion dir = null;
         CSVParser parser = null;
@@ -62,6 +62,7 @@ public class Insert extends Conn {
         System.out.println("\n                  --> proceso terminado /_");
     }
 
+    ///////////////////////////////////////////////////////////     CARGA PERSONAS
     public static void cargarPersonas(List<Direccion> domList) {
         Persona per = null;
         CSVParser parser = null;
@@ -87,6 +88,7 @@ public class Insert extends Conn {
         return dirRandom;
     }
 
+    ///////////////////////////////////////////////////////////     CARGA SOCIO
     public static void cargarSocio(List<Persona> personas) {
         Socio soc = null;
         ArrayList<String> tiposSocio = new ArrayList<String>();
@@ -116,6 +118,7 @@ public class Insert extends Conn {
         return socRandom;
     }
 
+    ///////////////////////////////////////////////////////////     CARGA TURNO
     public static void cargarTurno(List<Persona> personas) {
         Turno tur = null;
         ArrayList<String> tiposSocio = new ArrayList<String>();

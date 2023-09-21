@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQuery(name=Persona.BUSCAR_TODOS, query="SELECT p FROM Persona p")
+@NamedQuery(name=Persona.FILTRAR_POR_EDAD, query="SELECT p FROM Persona p WHERE p.edad BETWEEN ?1 AND ?2")
 public class Persona {
     @Id
     private int id;
@@ -15,6 +17,9 @@ public class Persona {
     private Direccion domicilio;
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "jugadores")
     private List<Turno> turnos;
+    public static final String BUSCAR_TODOS = "Persona.buscarTodos";
+    public static final String FILTRAR_POR_EDAD = "Persona.filtraPorEdad";
+
 
 //    --------------------------------------------------------------------------------------------------------------------
 
