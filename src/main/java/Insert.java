@@ -107,7 +107,6 @@ public class Insert extends Conn {
             em.persist(soc);
             System.out.print(".");
         }
-
         System.out.println("\n                  --> proceso terminado /_");
     }
 

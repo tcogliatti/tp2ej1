@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQuery(name=Direccion.BUSACAR_TODOS, query = "SELECT d FROM Direccion d")
+@NamedQuery(name=Direccion.BUSACAR_POR_CIUDAD, query = "SELECT d FROM Direccion d WHERE d.ciudad LIKE ?1")
 public class Direccion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,14 +17,17 @@ public class Direccion {
     private String calle;
     @OneToMany(mappedBy = "domicilio", fetch = FetchType.LAZY)
     private List<Persona> habitantes;
+    public static final String BUSACAR_TODOS = "Direccion.buscarTodos";
+    public static final String BUSACAR_POR_CIUDAD = "Direccion.buscarPorCiudad";
+//    --------------------------------------------------------------------------------------------------------------------
 
     public Direccion() {
     }
-    public Direccion(String calle, String ciudad) {
+    public Direccion(String ciudad, String calle) {
         this.ciudad = ciudad;
         this.calle = calle;
     }
-    public Direccion(int id, String calle, String ciudad) {
+    public Direccion(int id, String ciudad, String calle) {
         this.id = id;
         this.calle = calle;
         this.ciudad = ciudad;
