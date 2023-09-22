@@ -1,10 +1,17 @@
 import dao.Direccion;
 import dao.Turno;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
-public class Delete extends Conn {
+public class Delete {
+    protected final static String PERSISTENCE = "tp2e1";
+    protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE);
+    protected static EntityManager em = emf.createEntityManager();
     public static void main(String[] args) {
+        // coneccion
         em.getTransaction().begin();
 
         // Eliminar un turno id: 60418

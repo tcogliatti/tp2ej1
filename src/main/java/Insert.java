@@ -7,20 +7,27 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.*;
 
-public class Insert extends Conn {
+public class Insert {
     private static String path = "./src/main/java/csv/";
     private static final String DIRECCIONES_FILE = "domicilios.csv";
     private static final String PERSONAS_FILE = "personas.csv";
     private static final String SOCIO_FILE = "socio.csv";
     private static final int CANTIDAD_TURNOS = 20;
     private static final int CANTIDAD_JUGADORES_TURNOS = 10;
+    protected final static String PERSISTENCE = "tp2e1";
+    protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE);
+    protected static EntityManager em = emf.createEntityManager();
 
     public static void main(String[] args) {
+        // coneccion
         em.getTransaction().begin();
 
         // carga de direcciones
@@ -44,6 +51,7 @@ public class Insert extends Conn {
         em.close();
         emf.close();
     }
+
     ///////////////////////////////////////////////////////////     CARGA DIRECCIONES
     public static void cargarDireccion() {
         Direccion dir = null;

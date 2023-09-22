@@ -1,11 +1,16 @@
 import dao.Direccion;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.Iterator;
 import java.util.List;
 
-public class Update extends Conn {
+public class Update {
+    protected final static String PERSISTENCE = "tp2e1";
+    protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE);
+    protected static EntityManager em = emf.createEntityManager();
     public static void main(String[] args) {
         // comenzar transaccion
         em.getTransaction().begin();
