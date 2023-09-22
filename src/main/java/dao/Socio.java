@@ -22,6 +22,7 @@ public class Socio {
     public Socio(String tipo, Persona persona) {
         this.tipo = tipo;
         this.persona = persona;
+
     }
 
     public String getTipo() {
